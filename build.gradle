@@ -1,0 +1,68 @@
+plugins {
+    id 'com.gradle.plugin-publish' version '0.10.1'
+    id "java-gradle-plugin"
+    id "maven"
+    id "jacoco"
+}
+
+group = "com.elypia.commandler"
+version = "1.0.0"
+description = "Commandler is a abstract command handling framework for dispatching events."
+sourceCompatibility = 11
+targetCompatibility = 11
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+    jcenter()
+    mavenLocal()
+}
+
+dependencies {
+    // Commandler
+    implementation "com.elypia.commandler:core:4.0.0"
+    implementation "com.elypia.commandler:doc:4.0.0"
+
+    // GSON
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    // Testing
+    testImplementation "org.junit.jupiter:junit-jupiter:5.4.2"
+}
+
+/** Testing */
+test {
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport
+
+    reports {
+        html.enabled = false
+    }
+}
+
+/** Code Coverage */
+jacocoTestReport {
+    reports {
+        html.enabled = false
+        xml.enabled = false
+    }
+}
+
+/** Gradle Plugin */
+gradlePlugin {
+    plugins {
+        commandler {
+            id = 'com.elypia.commandler'
+            displayName = 'Commandler Gradle Plugin'
+            description = 'Perform pre/post compilation steps with Commandler as build steps rather than in runtime.'
+            implementationClass = 'com.elypia.commandler.CommandlerPlugin'
+        }
+    }
+}
+
+/** Publish Gradle Plugin */
+pluginBundle {
+    website = 'https://elypia.com/'
+    vcsUrl = 'https://gitlab.com/Elypia/commandler-gradle-plugin'
+    tags = ['commandler', 'gradle', 'java']
+}
