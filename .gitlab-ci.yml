@@ -21,7 +21,9 @@ test:
     - gradle --build-cache --full-stacktrace check
     - cat build/reports/jacoco/jacocoReport/html/index.html # TODO: This path is wrong
 
-.deploy:
+deploy:
   stage: deploy
+  only:
+    - tags
   script:
     - gradle publishPlugins
