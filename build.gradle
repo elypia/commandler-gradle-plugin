@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "com.elypia.commandler"
-version = "1.0.0"
+version = "1.0.1"
 description = "Commandler is a abstract command handling framework for dispatching events."
 sourceCompatibility = 11
 targetCompatibility = 11
