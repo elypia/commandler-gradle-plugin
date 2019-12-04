@@ -14,4 +14,18 @@
  * limitations under the License.
  */
 
-rootProject.name = 'commandler'
+package org.elypia.commandler;
+
+import org.gradle.api.*;
+
+/**
+ * @author seth@elypia.org (Seth Falco)
+ */
+public class CommandlerPlugin implements Plugin<Project> {
+
+    @Override
+    public void apply(Project target) {
+        target.getExtensions().create("commandler", CommandlerPluginExtension.class);
+        target.getTasks().create("commandlerdoc", CommandlerdocTask.class);
+    }
+}

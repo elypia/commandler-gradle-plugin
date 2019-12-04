@@ -19,7 +19,7 @@ test:
   stage: test
   script:
     - gradle --build-cache --full-stacktrace check
-    - cat build/reports/jacoco/jacocoReport/html/index.html # TODO: This path is wrong
+    - cat build/reports/jacoco/test/html/index.html
 
 deploy:
   stage: deploy

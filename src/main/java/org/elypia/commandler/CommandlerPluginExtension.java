@@ -14,4 +14,25 @@
  * limitations under the License.
  */
 
-rootProject.name = 'commandler'
+package org.elypia.commandler;
+
+import org.elypia.commandler.doc.Metadata;
+
+/**
+ * @author seth@elypia.org (Seth Falco)
+ */
+public class CommandlerPluginExtension {
+
+    private Metadata metadata;
+
+    /** If this plugin should export the default website with the docs. */
+    private boolean defaultDocSite = true;
+
+    public Metadata getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
+    }
+}
