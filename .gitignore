@@ -58,7 +58,7 @@ gradle-app.setting
 
 # IntelliJ
 out/
-/.idea/
+.idea/
 *.iml
 
 # Eclipse / vscode

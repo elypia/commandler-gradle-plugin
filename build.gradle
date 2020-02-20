@@ -2,11 +2,11 @@ plugins {
     id "maven"
     id "jacoco"
     id "java-gradle-plugin"
-    id 'com.gradle.plugin-publish' version '0.10.1'
+    id "com.gradle.plugin-publish" version "0.10.1"
 }
 
 group = "org.elypia.commandler"
-version = "1.2.0"
+version = "1.2.1"
 description = "Commandler is a abstract command handling framework for dispatching events."
 sourceCompatibility = 11
 targetCompatibility = 11
@@ -23,17 +23,20 @@ repositories {
 }
 
 dependencies {
+    // TODO: Temp until Commandler fixes why this is required.
+    implementation "org.yaml:snakeyaml:1.25"
+
     // Commandler
     implementation "org.elypia.commandler:core:${commandlerVersion}"
     implementation "org.elypia.commandler:doc:${commandlerVersion}"
 
     // Logging
-    implementation "org.slf4j:slf4j-api:1.7.29"
-    runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
+    implementation "org.slf4j:slf4j-api:1.7.30"
+    testRuntimeOnly "ch.qos.logback:logback-classic:1.2.3"
 
     // Testing
-    testImplementation "org.junit.jupiter:junit-jupiter:5.5.2"
-    testImplementation "org.mockito:mockito-core:3.2.0"
+    testImplementation "org.junit.jupiter:junit-jupiter:5.6.0"
+    testImplementation "org.mockito:mockito-core:3.2.4"
 }
 
 /** Testing */
@@ -66,7 +69,7 @@ gradlePlugin {
         commandler {
             id = 'org.elypia.commandler'
             displayName = 'Commandler Gradle Plugin'
-            description = 'Perform pre/post compilation steps with Commandler as build steps rather than in runtime.'
+            description = 'Post compilation utilities to get more out of Commandler.'
             implementationClass = 'org.elypia.commandler.CommandlerPlugin'
         }
     }
